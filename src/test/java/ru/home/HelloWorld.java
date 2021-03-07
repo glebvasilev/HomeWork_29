@@ -26,7 +26,7 @@ public class HelloWorld {
         webDriver = new ChromeDriver();
         webDriver.get("https://www.yandex.ru/");
 
-        WebElement searchInput = webDriver.findElement(By.id("text"));
+        WebElement searchInput = webDriver.findElement(By.cssSelector("#text"));
         searchInput.sendKeys("Hello World");
         searchInput.submit();
 
@@ -36,7 +36,8 @@ public class HelloWorld {
     }
 
     @After
-    public void closeDriver() {
+    public void closeDriver() throws InterruptedException {
+        Thread.sleep(3000);
         if (webDriver != null) {
             webDriver.quit();
         }
