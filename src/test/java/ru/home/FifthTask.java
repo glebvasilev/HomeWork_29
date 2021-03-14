@@ -8,11 +8,11 @@ import org.openqa.selenium.WebElement;
 
 import java.time.Duration;
 
-public class FirstTask extends WebDriverInit {
+public class FifthTask extends WebDriverInit {
 
         @Test
         @Order(1)
-        public void SeleniumPracticeTasks() throws InterruptedException {
+        public void SeleniumPracticeTasks() {
 
                 /*
                  * First task check
@@ -20,20 +20,18 @@ public class FirstTask extends WebDriverInit {
 
                 webDriver.get("https://savkk.github.io/selenium-practice/");
 
-                WebElement searchFirstTask = webDriver.findElement(By.xpath("//*[@id=\"button\"]"));
-                searchFirstTask.click();
+                WebElement searchFifthTask = webDriver.findElement(By.xpath("//*[@id=\"iframe\"]"));
+                searchFifthTask.click();
                 Duration.ofSeconds(1);
-                WebElement ButtonClickMe = webDriver.findElement(By.xpath("//*[@id=\"first\"]"));
-                ButtonClickMe.click();
-                Duration.ofSeconds(1);
-
-                // Searching text 'Excellent!'
-                String excellentText = webDriver.findElement(By.tagName("body")).getText();
-                Assert.assertTrue("Text not found!", excellentText.contains("Excellent!"));
-
-                WebElement ButtonClickMeToo = webDriver.findElement(By.xpath("//*[@id=\"content\"]/input"));
-                ButtonClickMeToo.click();
-                Duration.ofSeconds(1);
+                webDriver.switchTo().frame("code-frame");
+                WebElement CodeFrame = webDriver.findElement(By.id("code"));
+                String code = CodeFrame.getText();
+                code = code.replace("Your code is:", "");
+                System.out.println(code);
+                WebElement InputCode = webDriver.findElement(By.xpath("//*[@id=\"content\"]/input[1]"));
+                InputCode.sendKeys(code);
+                WebElement VerifyButton = webDriver.findElement(By.xpath("//*[@id=\"content\"]/input[2]"));
+                VerifyButton.click();
 
                 // Searching text 'Great! Return to menu'
                 String returnText = webDriver.findElement(By.tagName("body")).getText();
