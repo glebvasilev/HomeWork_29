@@ -27,16 +27,25 @@ public class SixthTask extends WebDriverInit {
         WebElement GetPassButton = webDriver.findElement(By.xpath("//*[@id=\"content\"]/button[1]"));
         GetPassButton.click();
         Alert alert = webDriver.switchTo().alert();
-        alert.getText();
-        //alert.replace("Your password:", "");
-        System.out.println(alert);
+        String alText = alert.getText();
+        alText = alText.replace("Your password: ", "");
+        System.out.println(alText);
+        alert.accept();
+        webDriver.switchTo().parentFrame();
+        WebElement EnterButton = webDriver.findElement(By.xpath("//*[@id=\"content\"]/button[2]"));
+        EnterButton.click();
+        Alert alertInput = webDriver.switchTo().alert();
+        alertInput.sendKeys(alText);
+        alertInput.accept();
+        webDriver.switchTo().parentFrame();
 
-        // Searching text 'Great! Return to menu'
-        String returnTextTaskTwo = webDriver.findElement(By.tagName("body")).getText();
-        Assert.assertTrue("Text not found!", returnTextTaskTwo.contains("Great! Return to menu"));
+        // Searching text 'Great!'
+        String TextTaskSixth = webDriver.findElement(By.tagName("body")).getText();
+        Assert.assertTrue("Text not found!", TextTaskSixth.contains("Great!"));
 
-        WebElement ReturnButtonTaskTwo = webDriver.findElement(By.xpath("//*[@id=\"back\"]/a"));
-        ReturnButtonTaskTwo.click();
-        Duration.ofSeconds(1);
+        WebElement ReturnButton = webDriver.findElement(By.xpath("//*[@id=\"content\"]/button[3]"));
+        ReturnButton.click();
+        Alert YesIamSureButton = webDriver.switchTo().alert();
+        YesIamSureButton.accept();
     }
 }

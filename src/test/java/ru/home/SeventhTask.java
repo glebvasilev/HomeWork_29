@@ -44,8 +44,8 @@ public class SeventhTask extends WebDriverInit {
         String DropDownListText = webDriver.findElement(By.tagName("body")).getText();
         Assert.assertTrue("Text not found!", DropDownListText.contains("Chris"));
 
-        WebElement ReturnButtonTaskThree = webDriver.findElement(By.xpath("//*[@id=\"back\"]/a"));
-        ReturnButtonTaskThree.click();
+        WebElement ReturnButtonTaskSeven = webDriver.findElement(By.xpath("//*[@id=\"back\"]/a"));
+        ReturnButtonTaskSeven.click();
         Duration.ofSeconds(1);
     }
 }
