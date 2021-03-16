@@ -19,7 +19,7 @@ public class WebDriverInit {
 
     @After
     public void closeDriver() {
-        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1000));
         if (webDriver != null) {
             webDriver.quit();
         }
